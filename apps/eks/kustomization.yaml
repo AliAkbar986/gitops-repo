@@ -1,0 +1,8 @@
+resources:
+  - ../base/certificates.yaml
+  - ../base/configmaps.yaml
+  - ../base/deployments.yaml
+  - ../base/hpa.yaml
+  - ../base/ingress.yaml
+  - ../base/namespace.yaml
+  - ../base/services.yaml
