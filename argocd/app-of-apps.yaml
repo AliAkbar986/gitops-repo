@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/AliAkbar986/gitops-repo.git'
+    repoURL: 'git@github.com:AliAkbar986/gitops-repo.git'
     targetRevision: HEAD
     path: argocd
   destination:
@@ -17,7 +17,7 @@ spec:
       prune: true
       selfHeal: true
   sources:
-    - repoURL: 'https://github.com/AliAkbar986/gitops-repo.git'
+    - repoURL: 'git@github.com:AliAkbar986/gitops-repo.git'
       targetRevision: HEAD
       path: clusters/local
       destination:
@@ -25,7 +25,7 @@ spec:
         namespace: production
         syncOptions:
           - CreateNamespace=true
-    - repoURL: 'https://github.com/AliAkbar986/gitops-repo.git'
+    - repoURL: 'git@github.com:AliAkbar986/gitops-repo.git'
       targetRevision: HEAD
       path: clusters/eks
       destination:
@@ -33,7 +33,7 @@ spec:
         namespace: production
         syncOptions:
           - CreateNamespace=true
-    - repoURL: 'https://github.com/AliAkbar986/gitops-repo.git'
+    - repoURL: 'git@github.com:AliAkbar986/gitops-repo.git'
       targetRevision: HEAD
       path: clusters/gke
       destination:
