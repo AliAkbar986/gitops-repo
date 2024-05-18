@@ -1,43 +1,66 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-of-apps
+  name: local-cluster-app
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: 'git@github.com:AliAkbar986/gitops-repo.git'
     targetRevision: HEAD
-    path: argocd
+    path: clusters/local
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: argocd
+    namespace: production
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-  sources:
-    - repoURL: 'git@github.com:AliAkbar986/gitops-repo.git'
-      targetRevision: HEAD
-      path: clusters/local
-      destination:
-        server: 'https://kubernetes.default.svc'
-        namespace: production
-        syncOptions:
-          - CreateNamespace=true
-    - repoURL: 'git@github.com:AliAkbar986/gitops-repo.git'
-      targetRevision: HEAD
-      path: clusters/eks
-      destination:
-        server: 'https://154DC528F0FB63B054B76A57BDBBFCBF.gr7.us-east-1.eks.amazonaws.com'
-        namespace: production
-        syncOptions:
-          - CreateNamespace=true
-    - repoURL: 'git@github.com:AliAkbar986/gitops-repo.git'
-      targetRevision: HEAD
-      path: clusters/gke
-      destination:
-        server: 'https://35.193.48.142'
-        namespace: production
-        syncOptions:
-          - CreateNamespace=true
+    syncOptions:
+      - CreateNamespace=true
+
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: eks-cluster-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'git@github.com:AliAkbar986/gitops-repo.git'
+    targetRevision: HEAD
+    path: clusters/eks
+  destination:
+    server: 'https://154DC528F0FB63B054B76A57BDBBFCBF.gr7.us-east-1.eks.amazonaws.com'
+    namespace: production
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gke-cluster-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'git@github.com:AliAkbar986/gitops-repo.git'
+    targetRevision: HEAD
+    path: clusters/gke
+  destination:
+    server: 'https://35.193.48.142'
+    namespace: production
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
