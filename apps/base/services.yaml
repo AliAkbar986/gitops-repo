@@ -4,6 +4,7 @@ metadata:
   name: frontend-service
   namespace: production
 spec:
+  type: LoadBalancer
   selector:
     app: frontend
   ports:
@@ -19,6 +20,7 @@ metadata:
   name: backend-service
   namespace: production
 spec:
+  type: LoadBalancer
   selector:
     app: backend
   ports:

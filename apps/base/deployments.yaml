@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: hub/app:front
+        image: nginx
         ports:
         - containerPort: 80
         env:
@@ -41,6 +41,6 @@ spec:
     spec:
       containers:
       - name: backend
-        image: hub/app:back
+        image: nginx
         ports:
         - containerPort: 80

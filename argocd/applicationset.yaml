@@ -6,7 +6,7 @@ metadata:
 spec:
   generators:
   - git:
-      repoURL: 'https://github.com/your-repo/gitops-repo'
+      repoURL: 'https://github.com/AliAkbar986/gitops-repo.git'
       revision: HEAD
       directories:
         - path: clusters/*
@@ -16,7 +16,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: 'https://github.com/your-repo/gitops-repo'
+        repoURL: 'https://github.com/AliAkbar986/gitops-repo.git'
         targetRevision: HEAD
         path: apps/{{path.basename}}
       destination:
@@ -26,3 +26,5 @@ spec:
         automated:
           prune: true
           selfHeal: true
+        syncOptions:
+          - CreateNamespace=true

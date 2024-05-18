@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/your-repo/gitops-repo'
+    repoURL: 'https://github.com/AliAkbar986/gitops-repo.git'
     targetRevision: HEAD
     path: argocd
   destination:
@@ -17,21 +17,27 @@ spec:
       prune: true
       selfHeal: true
   sources:
-    - repoURL: 'https://github.com/your-repo/gitops-repo'
+    - repoURL: 'https://github.com/AliAkbar986/gitops-repo.git'
       targetRevision: HEAD
       path: clusters/local
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: production
-    - repoURL: 'https://github.com/your-repo/gitops-repo'
+        syncOptions:
+          - CreateNamespace=true
+    - repoURL: 'https://github.com/AliAkbar986/gitops-repo.git'
       targetRevision: HEAD
       path: clusters/eks
       destination:
-        server: '<EKS-API-SERVER-URL>'
+        server: 'https://154DC528F0FB63B054B76A57BDBBFCBF.gr7.us-east-1.eks.amazonaws.com'
         namespace: production
-    - repoURL: 'https://github.com/your-repo/gitops-repo'
+        syncOptions:
+          - CreateNamespace=true
+    - repoURL: 'https://github.com/AliAkbar986/gitops-repo.git'
       targetRevision: HEAD
       path: clusters/gke
       destination:
-        server: '<GKE-API-SERVER-URL>'
+        server: 'https://35.193.48.142'
         namespace: production
+        syncOptions:
+          - CreateNamespace=true
