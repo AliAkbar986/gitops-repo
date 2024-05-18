@@ -8,7 +8,7 @@ metadata:
 spec:
   secretName: frontend-tls
   dnsNames:
-  - http://my01blog.zapto.org/
+  - my01blog.zapto.org
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
@@ -25,7 +25,7 @@ metadata:
 spec:
   secretName: backend-tls
   dnsNames:
-  - http://my01blog.zapto.org/
+  - my01blog.zapto.org
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
