@@ -1,4 +1,3 @@
 
 resources:
-  - ../base/deployments.yaml
-  - ../base/services.yaml
+  - ../base
