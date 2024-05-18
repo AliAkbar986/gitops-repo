@@ -1,0 +1,31 @@
+# certificate for frontend domain
+
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: frontend-cert
+  namespace: production
+spec:
+  secretName: frontend-tls
+  dnsNames:
+  - frontend.yourdomain.com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+
+
+
+# certificate for backend domain
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: backend-cert  # For backend 
+  namespace: production
+spec:
+  secretName: backend-tls
+  dnsNames:
+  - backend.yourdomain.com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
